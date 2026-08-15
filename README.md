@@ -1,10 +1,11 @@
-
-## Attention Is All You Need
+# Attention Is All You Need
 
 Vaswani et al., 2017. [`attention_is_all_you_need.py`](attention_is_all_you_need.py)
 
 Section 3.2 only: scaled dot-product attention and the multi-head version built
 on top of it.
+
+Written in NumPy — no autograd, no training loop, nothing that hides the math.
 
 ```
 Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) V
@@ -45,7 +46,7 @@ since the final token can already see everything.
 The weights are random, so nothing linguistic is happening. The shapes and the
 zeros are the point.
 
-### What's deliberately missing
+## What's deliberately missing
 
 No positional encoding, no feed-forward sublayer, no residuals or layer norm, no
 encoder-decoder cross-attention, and no backward pass. The mask is also assumed
