@@ -46,6 +46,20 @@ since the final token can already see everything.
 The weights are random, so nothing linguistic is happening. The shapes and the
 zeros are the point.
 
+## Why bother — Table 1
+
+Section 4 argues for self-attention on three axes at once, which is easier to
+see plotted than tabulated. [`plottings.py`](plottings.py) redraws Table 1 for
+`d = 512`, `k = 3`, sequence lengths up to 200:
+
+<img src="attention_comparison.png" width="620" alt="Self-attention vs RNN vs CNN across complexity per layer, sequential operations, and max path length">
+
+The middle and right panels are the whole argument. An RNN needs `O(n)`
+sequential steps and `O(n)` hops to connect the first token to the last;
+self-attention needs one of each, at the cost of the `O(n²·d)` term on the left.
+That trade is only favourable while `n` stays under `d` — the reason every
+long-context paper since has been about clawing back that `n²`.
+
 ## What's deliberately missing
 
 No positional encoding, no feed-forward sublayer, no residuals or layer norm, no
@@ -58,10 +72,10 @@ All of that is real, and all of it obscures the part I wanted to look at.
 
 ## Setup
 
-NumPy is the only dependency.
+NumPy for the implementation, matplotlib for the plots.
 
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
-pip install numpy
+pip install numpy matplotlib
 ```

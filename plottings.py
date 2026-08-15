@@ -95,10 +95,11 @@ ax2.set_title("Zoomed in: Self-Attention vs CNN\n(RNN removed — its O(n) line 
 ax2.legend(fontsize=9)
 ax2.grid(alpha=0.3)
 ax2.set_ylim(0, 8)
-plt.tight_layout()
-plt.savefig("attention_vs_cnn_zoomed.png", dpi=200, bbox_inches="tight")
 
-plt.tight_layout()
-plt.savefig("attention_vs_cnn_zoomed.png", dpi=200, bbox_inches="tight")
-plt.savefig("attention_comparison.png", dpi=200, bbox_inches="tight")
+# save each figure explicitly — plt.savefig would grab whichever is current
+fig.tight_layout()
+fig.savefig("attention_comparison.png", dpi=200, bbox_inches="tight")
+
+fig2.tight_layout()
+fig2.savefig("attention_vs_cnn_zoomed.png", dpi=200, bbox_inches="tight")
 print("Saved.")
